@@ -278,6 +278,7 @@ class Ui_Widget(object):
         self.CBPKGAment = QComboBox(self.frame)
         self.CBPKGAment.addItem("")
         self.CBPKGAment.addItem("")
+        self.CBPKGAment.addItem("")
         self.CBPKGAment.setObjectName(u"CBPKGAment")
         self.CBPKGAment.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         if not arrow_down_icon.isNull() and not arrow_up_icon.isNull():
@@ -731,6 +732,7 @@ class Ui_Widget(object):
         self.LABELPKGAment.setText(QCoreApplication.translate("Widget", u"Tipo de construcci\u00f3n:", None))
         self.CBPKGAment.setItemText(0, QCoreApplication.translate("Widget", u"Python [ament_python]", None))
         self.CBPKGAment.setItemText(1, QCoreApplication.translate("Widget", u"CMake [ament_cmake]", None))
+        self.CBPKGAment.setItemText(2, QCoreApplication.translate("Widget", u"Rust [ament_cargo]", None))
 
         self.INFOPKGAment.setText(QCoreApplication.translate("Widget", u"Sistema de compilaci\u00f3n del nuevo paquete.", None))
         self.LABELProjectVer.setText(QCoreApplication.translate("Widget", u"Versi\u00f3n del proyecto:", None))

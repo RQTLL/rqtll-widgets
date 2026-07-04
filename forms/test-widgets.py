@@ -85,7 +85,7 @@ if __name__ == "__main__":
     mapping = [
         #(Ui_Form, "RQT2 IDE / *", True, True),
         (Ui_Main, "RQT2 IDE", False, False),
-        #(Ui_New, "RQT2 IDE / Nuevo espacio de trabajo", False, False),
+        (Ui_New, "RQT2 IDE / Nuevo espacio de trabajo", False, False),
         #(Ui_Clone, "RQT2 IDE / Clonar espacio de trabajo", False, False),
         #(Ui_Pkg, "RQT2 IDE / Gestor de instalación", False, False),
         #(Ui_WizInit, "RQT2 IDE / Asistente de Instalación", False, False),
