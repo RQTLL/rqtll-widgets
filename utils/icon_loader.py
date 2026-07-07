@@ -96,6 +96,8 @@ def _resolve_icon(icon_dirs: Optional[Iterable[str]], rel_path: str, theme: str 
     qss_paths = [
         os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqt2_components', 'styles', theme)),
         os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqt2_components', 'styles', 'themes', theme)),
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqt2-components', 'styles', theme)),
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqt2-components', 'styles', 'themes', theme)),
     ]
     color = _parse_qss_palette(qss_paths)
     if not color:
@@ -172,6 +174,8 @@ def recolor_svg_to_temp(src_path: str, color: Optional[str] = None, theme: str =
     qss_paths = [
         os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqt2_components', 'styles', theme)),
         os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqt2_components', 'styles', 'themes', theme)),
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqt2-components', 'styles', theme)),
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqt2-components', 'styles', 'themes', theme)),
     ]
     if color is None:
         color = _parse_qss_palette(qss_paths) or '#000000'
