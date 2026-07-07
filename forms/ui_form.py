@@ -32,6 +32,56 @@ except (ImportError, ValueError):
 
 placeholder = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'icons', 'placeholder.svg'))
 
+class Nav(QWidget):
+    def __init__(self, Parent, icon_dirs, theme):
+        super().__init__(Parent)
+        self.icon_dirs = icon_dirs
+        self.theme = theme
+        self.layout = QVBoxLayout()
+        self.layout.setObjectName(u"Nav")
+        
+        self.code = NavButton(label="", target="code", parent=self)
+        self.add(self.code, icon="code")
+
+        self.launch = NavButton(label="", target="launch", parent=self)
+        self.add(self.launch, icon="launch")
+
+        self.graph = NavButton(label="", target="nodes", parent=self)
+        self.add(self.graph, icon="nodes")
+
+        self.teleop = NavButton(label="", target="teleop", parent=self)
+        self.add(self.teleop, icon="teleop")
+
+        self.ssh = NavButton(label="", target="ssh", parent=self)
+        self.add(self.ssh, icon="ssh")
+
+        self.spacer = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.layout.addItem(self.spacer)
+
+        self.viz = NavButton(label="", target="3d", parent=self)
+        self.add(self.viz, icon="3d")
+
+        self.sim = NavButton(label="", target="emulator", parent=self)
+        self.add(self.sim, icon="emulator")
+
+        self.widgets = NavButton(label="", target="widgets", parent=self)
+        self.add(self.widgets, icon="widgets")
+
+        self.packages = NavButton(label="", target="package", parent=self)
+        self.add(self.packages, icon="package")
+
+    def add(self, item, icon="close"):
+        self.sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        self.sizePolicy.setHorizontalStretch(0)
+        self.sizePolicy.setVerticalStretch(0)
+        self.sizePolicy.setHeightForWidth(self.sizePolicy.hasHeightForWidth())
+        item.setSizePolicy(self.sizePolicy)
+        i = QIcon()
+        icon_path = _resolve_icon(self.icon_dirs, os.path.join('icons', icon, 'default.svg'), theme=self.theme)
+        i.addFile(icon_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        item.setIcon(i)
+        self.layout.addWidget(item)
+
 class Ui_Widget(object):
     def setupUi(self, Widget, icon_dirs=None, theme='default.qss'):
         if not Widget.objectName():
@@ -44,192 +94,10 @@ class Ui_Widget(object):
         Widget.setWindowIcon(icon)
         self.horizontalLayout = QHBoxLayout(Widget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.verticalLayout_2 = QVBoxLayout()
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        # try to use NavButton from utils.nav
-        try:
-            self.pushButton = NavButton(label="", target="code", parent=Widget)
-            sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-            sizePolicy.setHorizontalStretch(0)
-            sizePolicy.setVerticalStretch(0)
-            sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-            self.pushButton.setSizePolicy(sizePolicy)
-            icon1 = QIcon()
-            icon1_path = _resolve_icon(icon_dirs, os.path.join('icons', 'code', 'default.svg'), theme=theme)
-            icon1.addFile(icon1_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-            self.pushButton.setIcon(icon1)
-            self.verticalLayout_2.addWidget(self.pushButton)
-        except Exception:
-            self.pushButton = QPushButton(Widget)
-            self.pushButton.setObjectName(u"pushButton")
-            sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-            sizePolicy.setHorizontalStretch(0)
-            sizePolicy.setVerticalStretch(0)
-            sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-            self.pushButton.setSizePolicy(sizePolicy)
-            icon1 = load_qicon(os.path.join('icons', 'code', 'default.svg'), icon_dirs, placeholder)
-            self.pushButton.setIcon(icon1)
 
-            self.verticalLayout_2.addWidget(self.pushButton)
-
-        try:
-            self.pushButton_2 = NavButton(label="", target="launch", parent=Widget)
-            sizePolicy.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-            self.pushButton_2.setSizePolicy(sizePolicy)
-            icon2 = QIcon()
-            icon2_path = _resolve_icon(icon_dirs, os.path.join('icons', 'launch', 'default.svg'), theme=theme)
-            icon2.addFile(icon2_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-            self.pushButton_2.setIcon(icon2)
-            self.verticalLayout_2.addWidget(self.pushButton_2)
-        except Exception:
-            self.pushButton_2 = QPushButton(Widget)
-            self.pushButton_2.setObjectName(u"pushButton_2")
-            sizePolicy.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-            self.pushButton_2.setSizePolicy(sizePolicy)
-            icon2 = load_qicon(os.path.join('icons', 'launch', 'default.svg'), icon_dirs, placeholder)
-            self.pushButton_2.setIcon(icon2)
-
-            self.verticalLayout_2.addWidget(self.pushButton_2)
-
-        try:
-            self.pushButton_3 = NavButton(label="", target="teleop", parent=Widget)
-            sizePolicy.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
-            self.pushButton_3.setSizePolicy(sizePolicy)
-            icon3 = QIcon()
-            icon3_path = _resolve_icon(icon_dirs, os.path.join('icons', 'teleop', 'default.svg'), theme=theme)
-            icon3.addFile(icon3_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-            self.pushButton_3.setIcon(icon3)
-            self.verticalLayout_2.addWidget(self.pushButton_3)
-        except Exception:
-            self.pushButton_3 = QPushButton(Widget)
-            self.pushButton_3.setObjectName(u"pushButton_3")
-            sizePolicy.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
-            self.pushButton_3.setSizePolicy(sizePolicy)
-            icon3 = load_qicon(os.path.join('icons', 'teleop', 'default.svg'), icon_dirs, placeholder)
-            self.pushButton_3.setIcon(icon3)
-
-            self.verticalLayout_2.addWidget(self.pushButton_3)
-
-        try:
-            self.pushButton_7 = NavButton(label="", target="nodes", parent=Widget)
-            sizePolicy.setHeightForWidth(self.pushButton_7.sizePolicy().hasHeightForWidth())
-            self.pushButton_7.setSizePolicy(sizePolicy)
-            icon4 = QIcon()
-            icon4_path = _resolve_icon(icon_dirs, os.path.join('icons', 'nodes', 'default.svg'), theme=theme)
-            icon4.addFile(icon4_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-            self.pushButton_7.setIcon(icon4)
-            self.verticalLayout_2.addWidget(self.pushButton_7)
-        except Exception:
-            self.pushButton_7 = QPushButton(Widget)
-            self.pushButton_7.setObjectName(u"pushButton_7")
-            sizePolicy.setHeightForWidth(self.pushButton_7.sizePolicy().hasHeightForWidth())
-            self.pushButton_7.setSizePolicy(sizePolicy)
-            icon4 = load_qicon(os.path.join('icons', 'nodes', 'default.svg'), icon_dirs, placeholder)
-            self.pushButton_7.setIcon(icon4)
-
-            self.verticalLayout_2.addWidget(self.pushButton_7)
-
-        try:
-            self.pushButton_8 = NavButton(label="", target="ssh", parent=Widget)
-            sizePolicy.setHeightForWidth(self.pushButton_8.sizePolicy().hasHeightForWidth())
-            self.pushButton_8.setSizePolicy(sizePolicy)
-            icon5 = QIcon()
-            icon5_path = _resolve_icon(icon_dirs, os.path.join('icons', 'ssh', 'default.svg'), theme=theme)
-            icon5.addFile(icon5_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-            self.pushButton_8.setIcon(icon5)
-            self.verticalLayout_2.addWidget(self.pushButton_8)
-        except Exception:
-            self.pushButton_8 = QPushButton(Widget)
-            self.pushButton_8.setObjectName(u"pushButton_8")
-            sizePolicy.setHeightForWidth(self.pushButton_8.sizePolicy().hasHeightForWidth())
-            self.pushButton_8.setSizePolicy(sizePolicy)
-            icon5 = load_qicon(os.path.join('icons', 'ssh', 'default.svg'), icon_dirs, placeholder)
-            self.pushButton_8.setIcon(icon5)
-
-            self.verticalLayout_2.addWidget(self.pushButton_8)
-
-        self.verticalSpacer = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.MinimumExpanding)
-
-        self.verticalLayout_2.addItem(self.verticalSpacer)
-
-        try:
-            self.pushButton_4 = NavButton(label="", target="3d", parent=Widget)
-            sizePolicy.setHeightForWidth(self.pushButton_4.sizePolicy().hasHeightForWidth())
-            self.pushButton_4.setSizePolicy(sizePolicy)
-            icon6 = QIcon()
-            icon6_path = _resolve_icon(icon_dirs, os.path.join('icons', '3d', 'default.svg'), theme=theme)
-            icon6.addFile(icon6_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-            self.pushButton_4.setIcon(icon6)
-            self.verticalLayout_2.addWidget(self.pushButton_4)
-        except Exception:
-            self.pushButton_4 = QPushButton(Widget)
-            self.pushButton_4.setObjectName(u"pushButton_4")
-            sizePolicy.setHeightForWidth(self.pushButton_4.sizePolicy().hasHeightForWidth())
-            self.pushButton_4.setSizePolicy(sizePolicy)
-            icon6 = load_qicon(os.path.join('icons', '3d', 'default.svg'), icon_dirs, placeholder)
-            self.pushButton_4.setIcon(icon6)
-
-            self.verticalLayout_2.addWidget(self.pushButton_4)
-
-        try:
-            self.pushButton_5 = NavButton(label="", target="emulator", parent=Widget)
-            sizePolicy.setHeightForWidth(self.pushButton_5.sizePolicy().hasHeightForWidth())
-            self.pushButton_5.setSizePolicy(sizePolicy)
-            icon7 = QIcon()
-            icon7_path = _resolve_icon(icon_dirs, os.path.join('icons', 'emulator', 'default.svg'), theme=theme)
-            icon7.addFile(icon7_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-            self.pushButton_5.setIcon(icon7)
-            self.verticalLayout_2.addWidget(self.pushButton_5)
-        except Exception:
-            self.pushButton_5 = QPushButton(Widget)
-            self.pushButton_5.setObjectName(u"pushButton_5")
-            sizePolicy.setHeightForWidth(self.pushButton_5.sizePolicy().hasHeightForWidth())
-            self.pushButton_5.setSizePolicy(sizePolicy)
-            icon7 = load_qicon(os.path.join('icons', 'emulator', 'default.svg'), icon_dirs, placeholder)
-            self.pushButton_5.setIcon(icon7)
-
-            self.verticalLayout_2.addWidget(self.pushButton_5)
-
-        try:
-            self.pushButton_6 = NavButton(label="", target="widgets", parent=Widget)
-            sizePolicy.setHeightForWidth(self.pushButton_6.sizePolicy().hasHeightForWidth())
-            self.pushButton_6.setSizePolicy(sizePolicy)
-            icon8 = QIcon()
-            icon8_path = _resolve_icon(icon_dirs, os.path.join('icons', 'widgets', 'default.svg'), theme=theme)
-            icon8.addFile(icon8_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-            self.pushButton_6.setIcon(icon8)
-            self.verticalLayout_2.addWidget(self.pushButton_6)
-        except Exception:
-            self.pushButton_6 = QPushButton(Widget)
-            self.pushButton_6.setObjectName(u"pushButton_6")
-            sizePolicy.setHeightForWidth(self.pushButton_6.sizePolicy().hasHeightForWidth())
-            self.pushButton_6.setSizePolicy(sizePolicy)
-            icon8 = load_qicon(os.path.join('icons', 'widgets', 'default.svg'), icon_dirs, placeholder)
-            self.pushButton_6.setIcon(icon8)
-
-            self.verticalLayout_2.addWidget(self.pushButton_6)
-
-        try:
-            self.pushButton_9 = NavButton(label="", target="package", parent=Widget)
-            sizePolicy.setHeightForWidth(self.pushButton_9.sizePolicy().hasHeightForWidth())
-            self.pushButton_9.setSizePolicy(sizePolicy)
-            icon9 = QIcon()
-            icon9_path = _resolve_icon(icon_dirs, os.path.join('icons', 'package', 'default.svg'), theme=theme)
-            icon9.addFile(icon9_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-            self.pushButton_9.setIcon(icon9)
-            self.verticalLayout_2.addWidget(self.pushButton_9)
-        except Exception:
-            self.pushButton_9 = QPushButton(Widget)
-            self.pushButton_9.setObjectName(u"pushButton_9")
-            sizePolicy.setHeightForWidth(self.pushButton_9.sizePolicy().hasHeightForWidth())
-            self.pushButton_9.setSizePolicy(sizePolicy)
-            icon9 = load_qicon(os.path.join('icons', 'package', 'default.svg'), icon_dirs, placeholder)
-            self.pushButton_9.setIcon(icon9)
-
-            self.verticalLayout_2.addWidget(self.pushButton_9)
-
-
-        self.horizontalLayout.addLayout(self.verticalLayout_2)
+        self.nav = Nav(Widget, icon_dirs, theme)
+        self.nav.setObjectName(u"nav")
+        self.horizontalLayout.addLayout(self.nav.layout)
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -245,9 +113,7 @@ class Ui_Widget(object):
 
         self.verticalLayout_3.addWidget(self.frame)
 
-
         self.horizontalLayout.addLayout(self.verticalLayout_3)
-
 
         self.retranslateUi(Widget)
 
@@ -257,4 +123,3 @@ class Ui_Widget(object):
     def retranslateUi(self, Widget):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"RQT2 IDE", None))
     # retranslateUi
-
