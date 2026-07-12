@@ -30,6 +30,8 @@ except (ImportError, ValueError):
 
 class Ui_Widget(object):
     def setupUi(self, Widget, icon_dirs=None, theme: str = "default.qss"):
+        self.icon_dirs = icon_dirs
+        self.theme = theme
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
         Widget.resize(630, 393)
@@ -37,7 +39,7 @@ class Ui_Widget(object):
         Widget.setMaximumSize(QSize(630, 393))
         
         icon = QIcon()
-        icon_path = _resolve_icon(icon_dirs, os.path.join('logo.svg'))
+        icon_path = _resolve_icon(self.icon_dirs, os.path.join('logo.svg'))
         icon.addFile(icon_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         Widget.setWindowIcon(icon)
 
@@ -47,16 +49,13 @@ class Ui_Widget(object):
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.LABELLogo = QLabel(Widget)
         self.LABELLogo.setObjectName(u"LABELLogo")
-        self.LABELLogo.setTextFormat(Qt.TextFormat.PlainText)
+        self.LABELLogo.setProperty('role', 'color')
+        icon = QIcon()
+        logo_path = _resolve_icon(self.icon_dirs, os.path.join("symbolic-color.svg"))
+        icon.addFile(logo_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.LABELLogo.setPixmap(icon.pixmap(QSize(256, 256)))
         self.LABELLogo.setFixedSize(QSize(256, 256))
-        logo_path = _resolve_icon(icon_dirs, "symbolic-color.svg")
-        if logo_path and os.path.exists(logo_path):
-            self.LABELLogo.setPixmap(QIcon(logo_path).pixmap(QSize(256, 256)))
-        else:
-            self.LABELLogo.setPixmap(load_qpixmap("symbolic-color.svg", icon_dirs))
         self.LABELLogo.setScaledContents(True)
-        self.LABELLogo.setAlignment(Qt.AlignmentFlag.AlignBottom|Qt.AlignmentFlag.AlignHCenter)
-        self.LABELLogo.setWordWrap(True)
 
         self.horizontalLayout_2.addWidget(self.LABELLogo)
 
