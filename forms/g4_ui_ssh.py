@@ -132,7 +132,7 @@ class Ui_Widget(object):
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
-        self.frame_2.setFixedWidth(300)
+        self.frame_2.setFixedWidth(400)
         self.verticalLayout_4 = QVBoxLayout(self.frame_2)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -315,5 +315,5 @@ class Ui_Widget(object):
 
         self.CHECKVerbose.setText(QCoreApplication.translate("Widget", u"Salida detallada", None))
         self.BTNConnect.setText(QCoreApplication.translate("Widget", u"Conectar", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Widget", u"Tab 1", None))
+        #self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Widget", u"Tab 1", None))
     # retranslateUi
