@@ -275,13 +275,13 @@ class Ui_Widget(object):
 
     def retranslateUi(self, Widget):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"RQT2 IDE", None))
-        self.CHECKhtfl.setText(QCoreApplication.translate("Widget", u"Bloquear GUI", None))
-        self.label_6.setText(QCoreApplication.translate("Widget", u"Perspectiva", None))
+        self.CHECKhtfl.setText(QCoreApplication.translate("Widget", u"Bloquear GUI.", None))
+        self.label_6.setText(QCoreApplication.translate("Widget", u"Perspectiva:", None))
         self.EditPerspectivename.setPlaceholderText(QCoreApplication.translate("Widget", u"Nombre", None))
         self.label.setText(QCoreApplication.translate("Widget", u"o", None))
         self.EDITPerspectiveFile.setText("")
         self.EDITPerspectiveFile.setPlaceholderText(QCoreApplication.translate("Widget", u"Archivo", None))
-        self.label_2.setText(QCoreApplication.translate("Widget", u"Standalone", None))
+        self.label_2.setText(QCoreApplication.translate("Widget", u"Standalone:", None))
         self.OPTStandalone.setItemText(0, QCoreApplication.translate("Widget", u"No", None))
         self.OPTStandalone.setItemText(1, QCoreApplication.translate("Widget", u"rqt_action.action_plugin", None))
         self.OPTStandalone.setItemText(2, QCoreApplication.translate("Widget", u"rqt_bag.bag", None))

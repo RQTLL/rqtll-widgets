@@ -313,7 +313,7 @@ class Ui_Widget(object):
         self.COMBOProtocol.setItemText(1, QCoreApplication.translate("Widget", u"IPv4 addresses", None))
         self.COMBOProtocol.setItemText(2, QCoreApplication.translate("Widget", u"IPv4 addresses", None))
 
-        self.CHECKVerbose.setText(QCoreApplication.translate("Widget", u"Salida detallada", None))
+        self.CHECKVerbose.setText(QCoreApplication.translate("Widget", u"Salida detallada.", None))
         self.BTNConnect.setText(QCoreApplication.translate("Widget", u"Conectar", None))
         #self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Widget", u"Tab 1", None))
     # retranslateUi

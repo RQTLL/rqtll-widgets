@@ -292,8 +292,8 @@ class Ui_Widget(object):
         self.EDITConfig.setPlaceholderText(QCoreApplication.translate("Widget", u"~/.rviz/default.rviz", None))
         self.label_2.setText(QCoreApplication.translate("Widget", u"Fixed frame:", None))
         self.label_6.setText(QCoreApplication.translate("Widget", u"Splash screen:", None))
-        self.CHECKOgre.setText(QCoreApplication.translate("Widget", u"Guardar registro (Ogre.log)", None))
-        self.CHECKFulllscreen.setText(QCoreApplication.translate("Widget", u"Pantalla completa", None))
+        self.CHECKOgre.setText(QCoreApplication.translate("Widget", u"Guardar registro (Ogre.log).", None))
+        self.CHECKFulllscreen.setText(QCoreApplication.translate("Widget", u"Pantalla completa.", None))
         self.BTNConnect.setText(QCoreApplication.translate("Widget", u"Conectar", None))
         #self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("Widget", u"Tab 1", None))
     # retranslateUi
