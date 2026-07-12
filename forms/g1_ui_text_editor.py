@@ -218,8 +218,7 @@ class Ui_Widget(object):
         self.statusdir = QLabel(self.frame_2)
         self.statusdir.setObjectName(u"statusdir")
         self.statusdir.setText("/path")
-        #font
-
+        self.statusdir.setStyleSheet("font-size: 12px; font-weight: bold;")
         self.horizontalLayout_3.addWidget(self.statusdir)\
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
@@ -234,6 +233,7 @@ class Ui_Widget(object):
         self.statustopics = QLabel(self.frame_2)
         self.statustopics.setObjectName(u"statustopics")
         self.statustopics.setText("Nodos: 1 / Topics: 2")
+        self.statustopics.setStyleSheet("font-size: 12px; font-weight: bold;")
         self.horizontalLayout_3.addWidget(self.statustopics)
 
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
@@ -248,6 +248,7 @@ class Ui_Widget(object):
         self.statuscode = QLabel(self.frame_2)
         self.statuscode.setObjectName(u"statuscode")
         self.statuscode.setText("ln: 10 col: 10. LF. UTF-8. Python")
+        self.statuscode.setStyleSheet("font-size: 12px; font-weight: bold;")
         self.horizontalLayout_3.addWidget(self.statuscode)
 
 
