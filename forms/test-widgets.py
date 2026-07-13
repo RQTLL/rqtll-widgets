@@ -109,12 +109,12 @@ if __name__ == "__main__":
         #(Ui_WizProgress, "RQT2 IDE / Progreso de Instalación", False, False),
         #(Ui_WizClose, "RQT2 IDE / Finalizar Instalación", False, False),
         #(Ui_TextEditor, "RQT2 IDE / Editor de código", True, True),
-        #(Ui_Compiler, "RQT2 IDE / Compilador", True, False),
+        (Ui_Compiler, "RQT2 IDE / Compilador", True, False),
         #(Ui_Twist, "RQT2 IDE / Twist Control", True, False),
         #(Ui_Ssh, "RQT2 IDE / ssh", True, False),
         #(Ui_Rviz, "RQT2 IDE / rviz2", True, False),
         #(Ui_Rqt, "RQT2 IDE / rqt", True, False),
-        (Ui_PkgManager, "RQT2 IDE / Gestor de paquetes", True, False),
+        #(Ui_PkgManager, "RQT2 IDE / Gestor de paquetes", True, False),
     ]
 
     for ui_class, title, show_daemon, show_tab in mapping:

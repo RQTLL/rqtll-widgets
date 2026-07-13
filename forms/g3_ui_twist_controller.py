@@ -413,7 +413,7 @@ class Ui_Widget(object):
 
     def retranslateUi(self, Widget):
         Widget.setWindowTitle(QCoreApplication.translate("Widget", u"RQT2 IDE", None))
-        self.LABELInfo_3.setText(QCoreApplication.translate("Widget", u"Topico", None))
+        self.LABELInfo_3.setText(QCoreApplication.translate("Widget", u"Tópico:", None))
         self.lineEdit_2.setPlaceholderText(QCoreApplication.translate("Widget", u"cmd_vel", None))
         self.BTNEdit.setText(QCoreApplication.translate("Widget", u"Editar botones", None))
         self.LABELInfo2.setText(QCoreApplication.translate("Widget", u"Vel. lineal: 0. Vel angular: 0.", None))
