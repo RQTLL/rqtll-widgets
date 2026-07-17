@@ -90,8 +90,8 @@ class Ui_Widget(object):
     def setupUi(self, Widget, icon_dirs=None, theme='default.qss'):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(1060, 644)
-        Widget.setMinimumSize(QSize(575, 350))
+        Widget.resize(1100, 644)
+        Widget.setMinimumSize(QSize(1050, 644))
         icon = QIcon()
         icon_path = _resolve_icon(icon_dirs, os.path.join('logo.svg'))
         icon.addFile(icon_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -774,7 +774,7 @@ class Ui_Widget(object):
         self.BTNSIMPlay = QPushButton(self.scrollAreaWidgetContents)
         self.BTNSIMPlay.setObjectName(u"BTNSIMPlay")
         icon = QIcon()
-        icon_path = _resolve_icon(icon_dirs, os.path.join('icons', 'play', 'default.svg'), theme=theme)
+        icon_path = _resolve_icon(icon_dirs, os.path.join('icons', 'folder', 'default.svg'), theme=theme)
         icon.addFile(icon_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.BTNSIMPlay.setIcon(icon)
         self.BTNSIMPlay.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))

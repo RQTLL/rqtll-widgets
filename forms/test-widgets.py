@@ -113,10 +113,10 @@ if __name__ == "__main__":
         #(Ui_TextEditor, "RQTLL IDE / Editor de código", True, True),
         #(Ui_Compiler, "RQTLL IDE / Compilador", True, False),
         #(Ui_Twist, "RQTLL IDE / Twist Control", True, False),
-        #(Ui_Ssh, "RQTLL IDE / ssh", True, False),
-        #(Ui_Rviz, "RQTLL IDE / rviz2", True, False),
+        (Ui_Ssh, "RQTLL IDE / ssh", True, False),
+        (Ui_Rviz, "RQTLL IDE / rviz2", True, False),
         (Ui_Gz, "RQTLL IDE / Gazebo", True, False),
-        #(Ui_Rqt, "RQTLL IDE / rqt", True, False),
+        (Ui_Rqt, "RQTLL IDE / rqt", True, False),
         #(Ui_PkgManager, "RQTLL IDE / Gestor de paquetes", True, False),
     ]
 

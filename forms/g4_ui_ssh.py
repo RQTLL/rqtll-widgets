@@ -88,8 +88,8 @@ class Ui_Widget(object):
     def setupUi(self, Widget, icon_dirs=None, theme='default.qss'):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(1060, 644)
-        Widget.setMinimumSize(QSize(575, 350))
+        Widget.resize(1100, 644)
+        Widget.setMinimumSize(QSize(1050, 644))
         icon = QIcon()
         icon_path = _resolve_icon(icon_dirs, os.path.join('logo.svg'))
         icon.addFile(icon_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -307,7 +307,7 @@ class Ui_Widget(object):
         self.label_5.setText(QCoreApplication.translate("Widget", u"Servidor:", None))
         self.label_4.setText(QCoreApplication.translate("Widget", u"Usuario:", None))
         self.label_2.setText(QCoreApplication.translate("Widget", u"Puerto:", None))
-        self.label_6.setText(QCoreApplication.translate("Widget", u"Llave PEM:", None))
+        self.label_6.setText(QCoreApplication.translate("Widget", u"Llave privada:", None))
         self.label.setText(QCoreApplication.translate("Widget", u"Protocolo:", None))
         self.COMBOProtocol.setItemText(0, QCoreApplication.translate("Widget", u"Todo", None))
         self.COMBOProtocol.setItemText(1, QCoreApplication.translate("Widget", u"IPv4 addresses", None))
