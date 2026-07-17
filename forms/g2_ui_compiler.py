@@ -24,6 +24,7 @@ import os
 try:
     from ..utils.icon_loader import load_qicon, load_qpixmap, _resolve_icon
     from ..utils.nav import NavButton
+    from .g2_ui_compiler_list import message_types
 except (ImportError, ValueError):
     import sys
     _parent = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,7 +32,7 @@ except (ImportError, ValueError):
         sys.path.insert(0, _parent)
     from utils.icon_loader import load_qicon, load_qpixmap, _resolve_icon
     from utils.nav import NavButton
-from g2_ui_compiler_list import message_types
+    from g2_ui_compiler_list import message_types
 
 placeholder = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'icons', 'placeholder.svg'))
 
