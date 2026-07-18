@@ -90,8 +90,8 @@ class Ui_Widget(object):
         self.theme = theme
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
-        Widget.resize(1100, 644)
-        Widget.setMinimumSize(QSize(1050, 644))
+        Widget.resize(1250, 644)
+        Widget.setMinimumSize(QSize(1250, 644))
         icon = QIcon()
         icon_path = _resolve_icon(icon_dirs, os.path.join('logo.svg'))
         icon.addFile(icon_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
