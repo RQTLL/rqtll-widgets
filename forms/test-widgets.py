@@ -110,14 +110,14 @@ if __name__ == "__main__":
         #(Ui_WizConfig, "RQTLL IDE / Versión de ROS2", False, False),
         #(Ui_WizProgress, "RQTLL IDE / Progreso de Instalación", False, False),
         #(Ui_WizClose, "RQTLL IDE / Finalizar Instalación", False, False),
-        (Ui_TextEditor, "RQTLL IDE / Editor de código", True, True),
-        (Ui_Compiler, "RQTLL IDE / Compilador", True, False),
-        (Ui_Twist, "RQTLL IDE / Twist Control", True, False),
-        #(Ui_Ssh, "RQTLL IDE / ssh", True, False),
-        #(Ui_Rviz, "RQTLL IDE / rviz2", True, False),
-        #(Ui_Gz, "RQTLL IDE / Gazebo", True, False),
-        #(Ui_Rqt, "RQTLL IDE / rqt", True, False),
-        (Ui_PkgManager, "RQTLL IDE / Gestor de paquetes", True, False),
+        #(Ui_TextEditor, "RQTLL IDE / Editor de código", True, True),
+        #(Ui_Compiler, "RQTLL IDE / Compilador", True, False),
+        #(Ui_Twist, "RQTLL IDE / Twist Control", True, False),
+        (Ui_Ssh, "RQTLL IDE / ssh", True, False),
+        (Ui_Rviz, "RQTLL IDE / rviz2", True, False),
+        (Ui_Gz, "RQTLL IDE / Gazebo", True, False),
+        (Ui_Rqt, "RQTLL IDE / rqt", True, False),
+        #(Ui_PkgManager, "RQTLL IDE / Gestor de paquetes", True, False),
     ]
 
     for ui_class, title, show_daemon, show_tab in mapping:
