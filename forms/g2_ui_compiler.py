@@ -292,10 +292,6 @@ class Ui_Widget(object):
 
         self.verticalLayout_5.addLayout(self.LAYOUTLanchers)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.verticalLayout_5.addItem(self.verticalSpacer_3)
-
         self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_4)
 
         self.verticalLayout_7.addWidget(self.scrollArea_4)
@@ -314,7 +310,7 @@ class Ui_Widget(object):
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
-        self.frame_3.setFixedWidth(500)
+        self.frame_3.setFixedWidth(350)
         self.verticalLayout_9 = QVBoxLayout(self.frame_3)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
