@@ -161,17 +161,6 @@ class Ui_Widget(object):
 
         self.verticalLayout_7.addWidget(self.label_5)
 
-        self.BTNROSBag = QPushButton(self.frame_2)
-        self.BTNROSBag.setObjectName(u"BTNROSBag")
-        icon = QIcon()
-        icon_path = _resolve_icon(icon_dirs, os.path.join('icons', 'record', 'default.svg'), theme=theme)
-        icon.addFile(icon_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.BTNROSBag.setIcon(icon)
-        self.BTNROSBag.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.BTNROSBag.setFixedHeight(32)
-
-        self.verticalLayout_7.addWidget(self.BTNROSBag)
-
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.label_6 = QLabel(self.frame_2)
@@ -196,6 +185,17 @@ class Ui_Widget(object):
 
 
         self.verticalLayout_7.addLayout(self.horizontalLayout_3)
+
+        self.BTNROSBag = QPushButton(self.frame_2)
+        self.BTNROSBag.setObjectName(u"BTNROSBag")
+        icon = QIcon()
+        icon_path = _resolve_icon(icon_dirs, os.path.join('icons', 'record', 'default.svg'), theme=theme)
+        icon.addFile(icon_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.BTNROSBag.setIcon(icon)
+        self.BTNROSBag.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.BTNROSBag.setFixedHeight(32)
+
+        self.verticalLayout_7.addWidget(self.BTNROSBag)
 
         self.BTNROSPlay = QPushButton(self.frame_2)
         self.BTNROSPlay.setObjectName(u"BTNROSPlay")
@@ -585,7 +585,7 @@ class Ui_Widget(object):
         self.BTNROSCLean.setText(QCoreApplication.translate("Widget", u"Limpiar", None))
         self.label_5.setText(QCoreApplication.translate("Widget", u"Rosbags", None))
         self.BTNROSBag.setText(QCoreApplication.translate("Widget", u"Grabar", None))
-        self.label_6.setText(QCoreApplication.translate("Widget", u"Abrir:", None))
+        self.label_6.setText(QCoreApplication.translate("Widget", u"Ubicaci\u00f3n:", None))
         self.BTNROSPlayDir.setText(QCoreApplication.translate("Widget", u"", None))
         self.BTNROSPlay.setText(QCoreApplication.translate("Widget", u"Reproducir", None))
         self.label_1.setText(QCoreApplication.translate("Widget", u"Nodos", None))
