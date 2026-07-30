@@ -234,7 +234,7 @@ class Ui_Widget(object):
         self.horizontalLayout_3.addWidget(self.label_3)
         self.statustopics = QLabel(self.frame_2)
         self.statustopics.setObjectName(u"statustopics")
-        self.statustopics.setText("Nodos: 1 / Topics: 2")
+        self.statustopics.setText("Nodos: 0 / Topics: 0")
         self.statustopics.setStyleSheet("font-size: 12px; font-weight: bold;")
         self.horizontalLayout_3.addWidget(self.statustopics)
 
