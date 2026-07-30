@@ -118,6 +118,7 @@ class Ui_Widget(object):
         self.frame.setProperty('role', 'central')
         self.frame.setProperty('variant', 'default')
         self.frame.setProperty('state', 'normal')
+        self.frame.setContentsMargins(0, 0, 0, 0)
         sizePolicy1 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
@@ -128,6 +129,7 @@ class Ui_Widget(object):
 
         self.horizontalLayout_2 = QHBoxLayout(self.frame)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.TREEFILEManage = QTreeWidget(self.frame)
         QTreeWidgetItem(self.TREEFILEManage)
         __qtreewidgetitem = QTreeWidgetItem(self.TREEFILEManage)
@@ -219,7 +221,7 @@ class Ui_Widget(object):
         self.horizontalLayout_3.addWidget(self.label_2)
         self.statusdir = QLabel(self.frame_2)
         self.statusdir.setObjectName(u"statusdir")
-        self.statusdir.setText("/path")
+        self.statusdir.setText("./")
         self.statusdir.setStyleSheet("font-size: 12px; font-weight: bold;")
         self.horizontalLayout_3.addWidget(self.statusdir)\
 

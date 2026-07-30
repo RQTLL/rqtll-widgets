@@ -77,15 +77,15 @@ class TitleBar(QWidget):
         layout.addWidget(self._title)
         layout.addItem(self._spacer)
 
-        if show_daemon:
-            self._btn_daemon = self._make_button('daemon/default.svg', 'Restart daemon', theme=theme)
-            layout.addWidget(self._btn_daemon)
-            self._btn_daemon.clicked.connect(self.restartDaemonRequested.emit)
+        self._btn_daemon = self._make_button('daemon/default.svg', 'Restart daemon', theme=theme)
+        layout.addWidget(self._btn_daemon)
+        self._btn_daemon.clicked.connect(self.restartDaemonRequested.emit)
+        self._btn_daemon.setVisible(show_daemon)
 
-        if show_tab:
-            self._btn_tab = self._make_button('tab/default.svg', 'Split terminal', theme=theme)
-            layout.addWidget(self._btn_tab)
-            self._btn_tab.clicked.connect(self.splitTerminalRequested.emit)
+        self._btn_tab = self._make_button('tab/default.svg', 'Split terminal', theme=theme)
+        layout.addWidget(self._btn_tab)
+        self._btn_tab.clicked.connect(self.splitTerminalRequested.emit)
+        self._btn_tab.setVisible(show_tab)
 
         layout.addWidget(self._btn_min)
         layout.addWidget(self._btn_max)
