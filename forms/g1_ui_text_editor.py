@@ -241,18 +241,6 @@ class Ui_Widget(object):
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
         self.horizontalLayout_3.addItem(self.horizontalSpacer_2)
 
-        self.label_4 = QLabel(self.frame_2)
-        self.label_4.setObjectName(u"label_4")
-        icon_path = _resolve_icon(icon_dirs, os.path.join('icons', 'code', 'default.svg'), self.theme)
-        i.addFile(icon_path, QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.label_4.setPixmap(i.pixmap(QSize(16, 16)))
-        self.horizontalLayout_3.addWidget(self.label_4)
-        self.statuscode = QLabel(self.frame_2)
-        self.statuscode.setObjectName(u"statuscode")
-        self.statuscode.setText("ln: 10 col: 10. LF. UTF-8. Python")
-        self.statuscode.setStyleSheet("font-size: 12px; font-weight: bold;")
-        self.horizontalLayout_3.addWidget(self.statuscode)
-
 
         self.verticalLayout_3.addWidget(self.frame_2)
         
