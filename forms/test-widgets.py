@@ -36,7 +36,7 @@ except (ImportError, ValueError):
         sys.path.insert(0, _parent)
     from utils.base_window import DemoWindow
     
-theme = 'dark.qss'  # or 'light.qss'
+theme = 'light.qss'  # or 'light.qss'
 logo_variant = 'color'  # or 'dark' or 'light'
 
 
@@ -107,16 +107,16 @@ if __name__ == "__main__":
         #(Ui_Pkg, "RQTLL IDE / Gestor de instalación", False, False),
         #(Ui_WizInit, "RQTLL IDE / Asistente de Instalación", False, False),
         #(Ui_WizOpt, "RQTLL IDE / Opciones de Instalación", False, False),
-        #(Ui_WizConfig, "RQTLL IDE / Versión de ROS2", False, False),
+        ### (Ui_WizConfig, "RQTLL IDE / Versión de ROS2", False, False),
         #(Ui_WizProgress, "RQTLL IDE / Progreso de Instalación", False, False),
         #(Ui_WizClose, "RQTLL IDE / Finalizar Instalación", False, False),
         (Ui_TextEditor, "RQTLL IDE / Editor de código", True, True),
         (Ui_Compiler, "RQTLL IDE / Compilador", True, False),
-        #(Ui_Twist, "RQTLL IDE / Twist Control", True, False),
-        #(Ui_Ssh, "RQTLL IDE / ssh", True, False),
-        #(Ui_Rviz, "RQTLL IDE / rviz2", True, False),
-        #(Ui_Gz, "RQTLL IDE / Gazebo", True, False),
-        #(Ui_Rqt, "RQTLL IDE / rqt", True, False),
+        (Ui_Twist, "RQTLL IDE / Twist Control", True, False),
+        (Ui_Ssh, "RQTLL IDE / ssh", True, False),
+        (Ui_Rviz, "RQTLL IDE / rviz2", True, False),
+        (Ui_Gz, "RQTLL IDE / Gazebo", True, False),
+        (Ui_Rqt, "RQTLL IDE / rqt", True, False),
         #(Ui_PkgManager, "RQTLL IDE / Gestor de paquetes", True, False),
     ]
 
