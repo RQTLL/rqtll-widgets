@@ -1,6 +1,7 @@
 import os
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QFrame, QSizePolicy
 from PySide6.QtCore import Qt, QEvent, Signal, QTimer
+from PySide6.QtGui import QIcon, QPixmap
 
 try:
     from .titlebar import TitleBar
@@ -229,6 +230,38 @@ class DemoWindow(QWidget):
             self.style().unpolish(self)
             self.style().polish(self)
             for widget in self.findChildren(QWidget):
+                if hasattr(widget, "_rqtll_icon_path"):
+                    widget.setIcon(QIcon(widget._rqtll_icon_path))
+                if hasattr(widget, "_rqtll_pixmap_path"):
+                    ico = QIcon(widget._rqtll_pixmap_path)
+                    if hasattr(widget, "_rqtll_pixmap_size") and widget._rqtll_pixmap_size.width() > 0:
+                        pix = ico.pixmap(widget._rqtll_pixmap_size)
+                    else:
+                        pix = ico.pixmap(32, 32)
+                    widget.setPixmap(pix)
+                if hasattr(widget, "topLevelItemCount"):
+                    def traverse_tree(item):
+                        if hasattr(item, "_rqtll_icon_paths"):
+                            for col, path in item._rqtll_icon_paths.items():
+                                item.setIcon(col, QIcon(path))
+                        for i in range(item.childCount()):
+                            traverse_tree(item.child(i))
+                    for i in range(widget.topLevelItemCount()):
+                        traverse_tree(widget.topLevelItem(i))
+                if hasattr(widget, "count") and hasattr(widget, "item"):
+                    for i in range(widget.count()):
+                        item = widget.item(i)
+                        if item and hasattr(item, "_rqtll_icon_path"):
+                            item.setIcon(QIcon(item._rqtll_icon_path))
+                if hasattr(widget, "rowCount") and hasattr(widget, "item"):
+                    for r in range(widget.rowCount()):
+                        for c in range(widget.columnCount()):
+                            item = widget.item(r, c)
+                            if item and hasattr(item, "_rqtll_icon_path"):
+                                item.setIcon(QIcon(item._rqtll_icon_path))
+                for action in widget.actions():
+                    if hasattr(action, "_rqtll_icon_path"):
+                        action.setIcon(QIcon(action._rqtll_icon_path))
                 widget.style().unpolish(widget)
                 widget.style().polish(widget)
             try:
