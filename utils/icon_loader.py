@@ -85,34 +85,8 @@ def _parse_qss_palette(qss_paths):
     return None
 
 
-def _resolve_icon(icon_dirs: Optional[Iterable[str]], rel_path: str, theme: str = 'default.qss') -> str:
-    path = resolve_icon_path(icon_dirs, rel_path)
-    if not path or not os.path.exists(path):
-        return path
-
-    if not path.lower().endswith('.svg'):
-        return path
-
-    qss_paths = [
-        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll_components', 'styles', theme)),
-        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll_components', 'styles', 'themes', theme)),
-        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll-components', 'styles', theme)),
-        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll-components', 'styles', 'themes', theme)),
-    ]
-    color = _parse_qss_palette(qss_paths)
-    if not color:
-        color = '#000000'
-
-    key = (os.path.abspath(path), color)
-    if key in _svg_cache and os.path.exists(_svg_cache[key]):
-        return _svg_cache[key]
-
-    try:
-        tree = ET.parse(path)
-        root = tree.getroot()
-    except Exception:
-        return path
-
+def _recolor_svg_tree(tree, color):
+    root = tree.getroot()
     changed = False
     for el in root.iter():
         style = el.get('style')
@@ -150,6 +124,37 @@ def _resolve_icon(icon_dirs: Optional[Iterable[str]], rel_path: str, theme: str 
                 parts.append(f'stroke:{color}')
             root.set('style', ';'.join(parts) + ';')
             changed = True
+    return changed
+
+
+def _resolve_icon(icon_dirs: Optional[Iterable[str]], rel_path: str, theme: str = 'default.qss') -> str:
+    path = resolve_icon_path(icon_dirs, rel_path)
+    if not path or not os.path.exists(path):
+        return path
+
+    if not path.lower().endswith('.svg'):
+        return path
+
+    qss_paths = [
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll_components', 'styles', theme)),
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll_components', 'styles', 'themes', theme)),
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll-components', 'styles', theme)),
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll-components', 'styles', 'themes', theme)),
+    ]
+    color = _parse_qss_palette(qss_paths)
+    if not color:
+        color = '#000000'
+
+    key = (os.path.abspath(path), color)
+    if key in _svg_cache and os.path.exists(_svg_cache[key]):
+        return _svg_cache[key]
+
+    try:
+        tree = ET.parse(path)
+    except Exception:
+        return path
+
+    changed = _recolor_svg_tree(tree, color)
 
     if not changed:
         return path
@@ -186,47 +191,10 @@ def recolor_svg_to_temp(src_path: str, color: Optional[str] = None, theme: str =
 
     try:
         tree = ET.parse(src_path)
-        root = tree.getroot()
     except Exception:
         return src_path
 
-    changed = False
-    for el in root.iter():
-        style = el.get('style')
-        if style:
-            parts = [p.strip() for p in style.split(';') if p.strip()]
-            d = {}
-            for p in parts:
-                if ':' in p:
-                    kk, vv = p.split(':', 1)
-                    d[kk.strip()] = vv.strip()
-            if d.get('fill') != color or d.get('stroke') != color:
-                d['fill'] = color
-                d['stroke'] = color
-                new_style = ';'.join(f"{k}:{v}" for k, v in d.items()) + ';'
-                el.set('style', new_style)
-                changed = True
-
-        for attr in ('fill', 'stroke'):
-            v = el.get(attr)
-            if v and v.strip() and v.strip() != color:
-                el.set(attr, color)
-                changed = True
-
-    root_style = root.get('style')
-    if not root_style:
-        root.set('style', f'fill:{color};stroke:{color};')
-        changed = True
-    else:
-        if 'fill:' not in root_style or 'stroke:' not in root_style:
-            parts = [p.strip() for p in root_style.split(';') if p.strip()]
-            keys = {p.split(':',1)[0].strip() for p in parts if ':' in p}
-            if 'fill' not in keys:
-                parts.append(f'fill:{color}')
-            if 'stroke' not in keys:
-                parts.append(f'stroke:{color}')
-            root.set('style', ';'.join(parts) + ';')
-            changed = True
+    changed = _recolor_svg_tree(tree, color)
 
     if not changed:
         return src_path
@@ -239,3 +207,24 @@ def recolor_svg_to_temp(src_path: str, color: Optional[str] = None, theme: str =
         return tf.name
     except Exception:
         return src_path
+
+
+def update_cached_icons_color(theme_name: str):
+    qss_paths = [
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll_components', 'styles', theme_name)),
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll_components', 'styles', 'themes', theme_name)),
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll-components', 'styles', theme_name)),
+        os.path.normpath(os.path.join(os.path.dirname(__file__), '..', '..', 'rqtll-components', 'styles', 'themes', theme_name)),
+    ]
+    color = _parse_qss_palette(qss_paths)
+    if not color:
+        return
+
+    for (src_path, _), temp_path in list(_svg_cache.items()):
+        if os.path.exists(temp_path) and os.path.exists(src_path):
+            try:
+                tree = ET.parse(src_path)
+                if _recolor_svg_tree(tree, color):
+                    tree.write(temp_path, encoding='utf-8', xml_declaration=True)
+            except Exception as e:
+                print(f"Error updating cached SVG: {e}")

@@ -14,6 +14,15 @@ except ImportError:
         _spec.loader.exec_module(_mod)
         TitleBar = _mod.TitleBar
 
+try:
+    from .icon_loader import update_cached_icons_color
+except ImportError:
+    try:
+        from icon_loader import update_cached_icons_color
+    except ImportError:
+        def update_cached_icons_color(theme):
+            pass
+
 class DemoWindow(QWidget):
     uiReinitialized = Signal()
     def __init__(self, ui_class, title: str = None, icon_dirs: list = None, parent=None, 
@@ -216,41 +225,12 @@ class DemoWindow(QWidget):
 
     def _on_theme_changed(self, theme: str):
         try:
-            container_layout = self.main_container.layout()
-
-            new_content = QWidget(self.main_container)
-            new_content.setObjectName("Content")
-
-            if container_layout is not None:
-                container_layout.replaceWidget(self.content, new_content)
-            else:
-                self.main_container.layout().addWidget(new_content)
-
-            old_content = self.content
-            self.content = new_content
-
-            try:
-                self.ui.setupUi(self.content, icon_dirs=self._initial_icon_dirs, theme=theme)
-            except TypeError:
-                self.ui.setupUi(self.content)
-
-            old_content.hide()
-            QTimer.singleShot(0, old_content.deleteLater)
-
-            content_min = self.content.minimumSize()
-            content_max = self.content.maximumSize()
-            if content_min.isValid() and content_max.isValid() and content_min == content_max and content_min.width() > 0:
-                title_height = 40
-                fixed_width = content_min.width() + 16
-                fixed_height = content_min.height() + 16 + title_height
-                self.setFixedSize(fixed_width, fixed_height)
-                try:
-                    self.titlebar._btn_max.setVisible(False)
-                except Exception:
-                    pass
-
-            self.main_container.style().unpolish(self.main_container)
-            self.main_container.style().polish(self.main_container)
+            update_cached_icons_color(theme)
+            self.style().unpolish(self)
+            self.style().polish(self)
+            for widget in self.findChildren(QWidget):
+                widget.style().unpolish(widget)
+                widget.style().polish(widget)
             try:
                 self.uiReinitialized.emit()
             except Exception:
