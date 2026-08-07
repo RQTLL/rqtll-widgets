@@ -73,9 +73,9 @@ Configura de forma interactiva las dependencias requeridas para la instalación 
 Administra los paquetes instalados del sistema operativo mediante una cuadrícula de estado.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/RQTLL/rqtll-components/blob/main/releases/dark/web/A1-WIZARD-2D.webp">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/RQTLL/rqtll-components/blob/main/releases/light/web/A1-WIZARD-2L.webp">
-  <img alt="Gestor de Paquetes" src= "https://github.com/RQTLL/rqtll-components/blob/main/releases/dark/web/A1-WIZARD-2D.webp" width="100%" height="auto">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/RQTLL/rqtll-components/blob/main/releases/dark/web/A2-START-2D.webp">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/RQTLL/rqtll-components/blob/main/releases/light/web/A2-START-2L.webp">
+  <img alt="Gestor de Paquetes" src= "https://github.com/RQTLL/rqtll-components/blob/main/releases/dark/web/A2-START-2D.webp" width="100%" height="auto">
 </picture>
 
 ### 3. Panel Principal (`f0_main.ui`)
